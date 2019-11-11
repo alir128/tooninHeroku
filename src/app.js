@@ -164,7 +164,6 @@ export function checkStreamResult(result) {
                 try {
                     playBtn.$refs.link.hidden = false;
                     audioElem.srcObject = incomingStream;
-                    audioElem.play();
                     audioElem.onplay = () => {
                         updateState({
                             established: true,
