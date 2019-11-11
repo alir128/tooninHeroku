@@ -153,5 +153,5 @@ app.use('/', serveStatic(path.join(__dirname, '/dist')));
 // });
 
 https.listen(port, () => {
-  console.log('https listening on 8443');
+  console.log('https listening on'+port);
 })
