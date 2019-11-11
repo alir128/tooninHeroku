@@ -159,19 +159,37 @@ export function checkStreamResult(result) {
             logMessage('track added');
             incomingStream = new MediaStream([event.track]);
 
-            try {
-                audioElem.srcObject = incomingStream;
-                audioElem.play();
-                audioElem.onplay = () => {
-                    updateState({
-                        established: true,
-                        isPlaying: audioElem.srcObject.active,
-                        stream: incomingStream
-                    });
+            var _iOSDevice = !!navigator.platform.match(/iPhone|iPod|iPad/);
+            if(_iOSDevice) {
+                try {
+                    audioElem.srcObject = incomingStream;
+                    audioElem.play();
+                    audioElem.onplay = () => {
+                        updateState({
+                            established: true,
+                            isPlaying: audioElem.srcObject.active,
+                            stream: incomingStream
+                        });
+                    }
                 }
-            }
-            catch(err) {
-                playBtn.$refs.link.hidden = false;
+                catch(err) {
+                    playBtn.$refs.link.hidden = false;
+                }
+            } else {
+                try {
+                    audioElem.srcObject = incomingStream;
+                    audioElem.play();
+                    audioElem.onplay = () => {
+                        updateState({
+                            established: true,
+                            isPlaying: audioElem.srcObject.active,
+                            stream: incomingStream
+                        });
+                    }
+                }
+                catch(err) {
+                    playBtn.$refs.link.hidden = false;
+                }
             }
         }
         updateState({
