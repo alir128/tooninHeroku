@@ -3,7 +3,7 @@ import Vuex from 'vuex'
 
 import io from "socket.io-client";
 
-const socket = io("https://toonin.ali-raza.me/");
+const socket = io("https://toonin.ali-raza.me/", {secure: true});
 
 socket.on("src ice", iceData => {
   logMessage(
