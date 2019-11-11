@@ -13,7 +13,7 @@ var vars = require("./vars");
 const serveStatic = require('serve-static')
 const path = require('path')
 var rooms = {};
-
+const port = process.env.PORT || 8443;
 function sleep(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
 }
@@ -148,10 +148,10 @@ app.get("/status", (req, res) => {
 
 app.use('/', serveStatic(path.join(__dirname, '/dist')));
 
-http.listen(8100, () => {
-  console.log("Signalling server started on port 8100");
-});
+// http.listen(port, () => {
+//   console.log("Signalling server started on port 8100");
+// });
 
-https.listen(8443, () => {
+https.listen(port, () => {
   console.log('https listening on 8443');
 })
