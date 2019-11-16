@@ -109,7 +109,7 @@ export function checkStreamResult(result) {
         socket.emit("new peer", state.room);
         setSocketListeners(socket);
         const rtcConn = new RTCPeerConnection(servers);
-
+        console.log(rtcConn);
         rtcConn.onicecandidate = event => {
             if (!event.candidate) {
                 logMessage("No candidate for RTC connection");
