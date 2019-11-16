@@ -159,7 +159,8 @@ export function checkStreamResult(result) {
             logMessage('track added');
             incomingStream = new MediaStream([event.track]);
 
-            var _iOSDevice = !!navigator.platform.match(/iPhone|iPod|iPad/);
+            var _iOSDevice = !!navigator.platform.match(/iPhone|iPod|iPad|Macintosh/);
+            console.log(_iOSDevice);
             if(_iOSDevice) {
                 try {
                     playBtn.$refs.link.hidden = false;
