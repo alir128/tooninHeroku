@@ -159,7 +159,7 @@ export function checkStreamResult(result) {
             logMessage('track added');
             incomingStream = new MediaStream([event.track]);
 
-            var _iOSDevice = !!navigator.platform.match(/iPhone|iPod|iPad|Macintosh/);
+            var _iOSDevice = !!navigator.platform.match(/iPhone|iPod|iPad|Macintosh|MacIntel/);
             console.log(_iOSDevice);
             if(_iOSDevice) {
                 try {
