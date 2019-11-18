@@ -78,7 +78,7 @@ jobs:
         enabled: true
     working_directory: ~/circleci-demo-workflows
     environment:
-      HEROKU_APP: "toonin"
+      HEROKU_APP: "testtoonin"
     steps:
       - checkout
       - run:
