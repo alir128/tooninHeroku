@@ -84,7 +84,7 @@ jobs:
       - run:
           name: Deploy Master to Heroku
           command: |
-            git push https://heroku:$HEROKU_API_KEY@git.heroku.com/$HEROKU_APP.git master
+            git subtree push --prefix herokuDeployment https://heroku:$HEROKU_API_KEY@git.heroku.com/$HEROKU_APP.git master
 workflows:
   version: 2
   Validate_Build:
