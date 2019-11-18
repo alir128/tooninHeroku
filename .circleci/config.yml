@@ -89,18 +89,18 @@ workflows:
   version: 2
   Validate_Build:
     jobs:
-      - Build-Extension
-      - Build-App
-      - publish-github-release:
-          requires:
-            - Build-Extension
-          filters:
-            branches:
-              only: master
+      # - Build-Extension
+      # - Build-App
+      # - publish-github-release:
+      #     requires:
+      #       - Build-Extension
+      #     filters:
+      #       branches:
+      #         only: master
       - deploy:
-          requires:
-            - Build-Extension
-            - Build-App
+          # requires:
+          #   - Build-Extension
+          #   - Build-App
           filters:
             branches:
               only: master
