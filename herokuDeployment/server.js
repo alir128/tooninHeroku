@@ -30,10 +30,11 @@ const genRoomID = () => {
   }
 };
 
-app.use(function(request, response){
-  if(!request.secure){
-    response.redirect("https://" + request.headers.host + request.url);
-  }
+app.get('*',function(req,res,next){
+  if(req.headers['x-forwarded-proto']!='https')
+    res.redirect("https://" + req.headers.host + req.url)
+  else
+    next() /* Continue to other routes if we're not redirecting */
 })
 
 function createRoom(socket, roomName) {
