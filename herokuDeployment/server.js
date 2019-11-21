@@ -30,6 +30,10 @@ const genRoomID = () => {
   }
 };
 
+app.get("*", function(request, response){
+  response.redirect("https://" + request.headers.host + request.url);
+});
+
 function createRoom(socket, roomName) {
     var newRoomID = "";
     console.log("Received request to create new room");
@@ -146,9 +150,7 @@ app.use('/', serveStatic(path.join(__dirname, '/dist')));
 // http.listen(port, () => {
 //   console.log("Signalling server started on port 8100");
 // });
-app.get("*", function(request, response){
-  response.redirect("https://" + request.headers.host + request.url);
-});
+
 
 http.listen(port, () => {
   console.log('https listening on '+port);
